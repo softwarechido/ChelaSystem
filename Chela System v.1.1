@@ -1,0 +1,65 @@
+@startuml
+
+class Driver {
+  +iniciarInventario() : void
+  +main() : void
+}
+
+class Cerveza {
+  -serie : String
+  -lote : String
+  -precio : double
+  -granoBase : Grano
+  -marca : Marca
+  -origen : Origen
+  -tipo : TipoCerveza
+  +Cerveza()
+  +getGranoBase() : Grano
+  +getLote() : String
+  +getMarca() : Marca
+  +getOrigen() : Origen
+  +getPrecio() : double
+  +getSerie() : String
+  +getTipo() : TipoCerveza
+  +setGranoBase(granoBase : Grano) : void
+  +setLote(lote : String) : void
+  +setMarca(marca : Marca) : void
+  +setOrigen(origen : Origen) : void
+  +setPrecio(precio : double) : void
+  +setSerie(serie : String) : void
+  +setTipo(tipo : TipoCerveza) : void
+}
+
+enum Grano {
+  +toString() : String
+}
+
+enum Marca {
+  +toString() : String
+}
+
+enum Origen {
+  +toString() : String
+}
+
+enum TipoCerveza {
+  +toString() : String
+}
+
+class Inventario {
+  -cervezas : LinkedList<Cerveza>
+  +Inventario()
+  +addCerveza(serie : String, lote : String, precio : double, marca : Marca, tipo : TipoCerveza, granoBase : Grano, origen : Origen) : void
+  +getCerveza(serie : String) : Cerveza
+  +search(chela : Cerveza) : Cerveza
+}
+
+Driver ..> Inventario : uses
+Driver ..> Cerveza : tests
+Cerveza --> Grano
+Cerveza --> Marca
+Cerveza --> Origen
+Cerveza --> TipoCerveza
+Inventario o-- Cerveza
+
+@enduml
