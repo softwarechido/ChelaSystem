@@ -1,0 +1,75 @@
+@startuml Chela System (v.2.0)
+
+class CervezaParams {
+  -marca : Marca
+  -tipo : TipoCerveza
+  -granoBase : Grano
+  -origen : Origen
+  +CervezaParams()
+  +getGranoBase() : Grano
+  +getMarca() : Marca
+  +getOrigen() : Origen
+  +getTipo() : TipoCerveza
+  +setGranoBase(granoBase : Grano) : void
+  +setMarca(marca : Marca) : void
+  +setOrigen(origen : Origen) : void
+  +setTipo(tipo : TipoCerveza) : void
+  +matches(params : CervezaParams) : boolean
+}
+
+class Cerveza {
+  -serie : String
+  -lote : String
+  -precio : double
+  -params : CervezaParams
+  +Cerveza()
+  +getLote() : String
+  +getParams() : CervezaParams
+  +getPrecio() : double
+  +getSerie() : String
+  +setLote(lote : String) : void
+  +setParams(params : CervezaParams) : void
+  +setPrecio(precio : double) : void
+  +setSerie(serie : String) : void
+}
+
+class Inventario {
+  -cervezas : LinkedList<Cerveza>
+  +Inventario()
+  +addCerveza(cerveza : Cerveza) : void
+  +getCerveza(serie : String) : Cerveza
+  +search(chelaObjetivo : CervezaParams) : LinkedList
+}
+
+class Driver {
+  +iniciarInventario()
+  +main()
+}
+
+enum Grano {
+  +toString()
+}
+
+enum Marca {
+  +toString()
+}
+
+enum Origen {
+  +toString()
+}
+
+enum TipoCerveza {
+  +toString()
+}
+
+class tests {
+}
+
+CervezaParams --> Marca
+CervezaParams --> TipoCerveza
+CervezaParams --> Grano
+CervezaParams --> Origen
+Cerveza --> CervezaParams
+Inventario o-- Cerveza
+
+@enduml
