@@ -1,0 +1,43 @@
+@startuml Chela System (v1.0)
+
+class Inventario {
+  - cervezas
+  + addCerveza(serie : String, lote : String, precio : double, marca : String, tipo : String, granoBase : String, origen : String) : void
+  + getCerveza(serie : String) : Cerveza
+  + search(chela : Cerveza) : Cerveza
+}
+
+class Driver {
+  + iniciarInventario()
+  + main()
+}
+
+class Cerveza {
+  - serie : String
+  - lote : String
+  - precio : double
+  - marca : String
+  - tipo : String
+  - granoBase : String
+  - origen : String
+  + Cerveza(serie : String, lote : String, precio : double, marca : String, tipo : String, granoBase : String, origen : String)
+  + getGranoBase() : String
+  + getLote() : String
+  + getMarca() : String
+  + getOrigen() : String
+  + getPrecio() : double
+  + getSerie() : String
+  + getTipo() : String
+  + setGranoBase(granoBase : String) : void
+  + setLote(lote : String) : void
+  + setMarca(marca : String) : void
+  + setOrigen(origen : String) : void
+  + setPrecio(precio : double) : void
+  + setSerie(serie : String) : void
+  + setTipo(tipo : String) : void
+}
+
+Inventario "1" o-- "*" Cerveza
+Driver ..> Inventario : uses
+
+@enduml
