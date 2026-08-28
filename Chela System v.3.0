@@ -1,0 +1,69 @@
+@startuml
+title ChuPT System V.1.0
+
+class Bebida {
+  - serie : String
+  - lote : String
+  - precio : double
+  - params : BebidaParams
+  + Bebida(serie : String, lote : String, precio : double, params : BebidaParams)
+  + getLote() : String
+  + getParams() : BebidaParams
+  + getPrecio() : double
+  + getSerie() : String
+  + setLote(lote : String) : void
+  + setParams(params : BebidaParams) : void
+  + setPrecio(precio : double) : void
+  + setSerie(serie : String) : void
+  + toString() : String
+}
+
+class BebidaParams {
+  - propiedades : Map<Object>
+  + BebidaParams(propiedades : Map<Object>)
+  + getPropiedad(name : String) : Object
+  + setPropiedad() : Map
+  + matches(params : BebidaParams) : boolean
+  + toString() : String
+}
+
+class Inventario {
+  - bebidas : LinkedList<Bebida>
+  + Inventario()
+  + addBebida(input : Bebida) : void
+  + getBebida(serie : String) : Bebida
+  + search(objetivo : BebidaParams) : LinkedList
+}
+
+enum ColorEnvase {
+  + toString()
+}
+
+enum Origen {
+  + toString()
+}
+
+enum Marca {
+  + toString()
+}
+
+enum Grano {
+  + toString()
+}
+
+enum TipoCerveza {
+  + toString()
+}
+
+enum TipoBebida {
+  + toString()
+}
+
+enum SaborRefresco {
+  + toString()
+}
+
+Bebida --> BebidaParams : params
+Inventario --> Bebida : bebidas
+
+@enduml
